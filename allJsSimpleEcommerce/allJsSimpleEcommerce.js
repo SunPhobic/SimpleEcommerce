@@ -3,6 +3,23 @@ let toggleState = false
 const stock = [{name: 'prod_1',price:100},{name:'prod_2',price:200}]
 const cart  =[]
 
+function createHeader(){
+    const header = document.createElement('header')
+    header.setAttribute('id','allJsHeader')
+
+    const title = document.createElement('h1')
+    title.innerHTML = 'All .Js Simple Ecommerce'
+
+    const a = document.createElement('a')
+    a.innerHTML = 'Home'
+    a.setAttribute('href','../index.html')
+
+    header.appendChild(title)
+    header.appendChild(a)
+    body.appendChild(header)
+}
+createHeader()
+
 
 function toggleButton(){
 const toggleViewButton = document.createElement('button')
@@ -25,13 +42,18 @@ function toggleView(){
     if(toggleState){
         button.innerHTML = 'see all products'
         const list = document.querySelector('#stockListDiv')
+        const cartDiv = document.querySelector('#cartDiv')
         body.removeChild(list)
+        if(cartDiv){
+            body.removeChild(cartDiv)
+        }
         createAddForm()
     }else{
         button.innerHTML = 'Add Products'
         const form = document.querySelector('#addForm')
         body.removeChild(form)
         createProdList()
+        createCart()
     }
     
 }
@@ -107,7 +129,7 @@ function handleSubmit(ev){
     stock.push(
         {
             name:ev.target.inputName.value,
-            price:ev.target.inputPrice.value
+            price:parseInt(ev.target.inputPrice.value)
         }
     )
     const inputName = document.querySelector('#inputName')

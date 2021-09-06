@@ -5,46 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="oopSimpleEcommerce.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <h1 id="title">OOP Simple Ecommerce</h1>
         <nav id="navigation">
-            
+            <a href="../index.html">Home</a>
         </nav>
     </header>
-    <main id="mainStockList">
-        <h3>Add Product</h3>
-        <form id="addStockForm" >
-            <label for="nameInput">Product name: </label>
-            <input 
-                type="text" 
-                name="nameInput" 
-                placeholder="Product Name"
-                id="nameInput">
+    <main id="mainStockList" class="flexbox-row exterior-margin">
+        <section class="flexbox-column">
+            <h3>Add Product</h3>
+            <form id="addStockForm" class="flexbox-column">
+                <label for="nameInput">Product name: </label>
+                <input 
+                    type="text" 
+                    name="nameInput" 
+                    placeholder="Product Name"
+                    id="nameInput">
+    
+                <label for="priceInput"> Product Price</label>
+                <input 
+                    type="number" 
+                    name="PriceInput" 
+                    placeholder="Product price"
+                    id="priceInput">
+    
+                <button type="submit" id="submitButton">Add Product</button>
+            </form>
+            <h3>Stock List</h3>
+            <ul id="stockUl">
+    
+            </ul>
+        </section>
+       
 
-            <label for="priceInput"> Product Price</label>
-            <input 
-                type="number" 
-                name="PriceInput" 
-                placeholder="Product price"
-                id="priceInput">
-
-            <button type="submit" id="submitButton">Add Product</button>
-        </form>
-        <h3>Stock List</h3>
-        <ul id="stockUl">
-
-        </ul>
+        <section id="cartSection">
+            <h3>Cart</h3>
+            <ul id="cartUl">
+    
+            </ul>
+        </section>
     </main>
 
-    <section id="cartSection">
-        <h3>Cart</h3>
-        <ul id="cartUl">
-
-        </ul>
-    </section>
+    
 
 
     <script src="ooPSimpleEcommerce.js"></script>

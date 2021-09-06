@@ -86,12 +86,6 @@
 
             this.cartUl.innerHTML = ''
             this.populateList(this.cart,this.cartUl)
-        },
-
-        test:function(ev){
-            ev.preventDefault()
-            console.log(this)
-            console.log('test successful')
         }
     }
     ecommerce.init()
