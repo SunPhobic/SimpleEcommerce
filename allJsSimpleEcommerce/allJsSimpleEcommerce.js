@@ -2,6 +2,10 @@ const body = document.querySelector('body')
 let toggleState = false
 const stock = [{name: 'prod_1',price:100},{name:'prod_2',price:200}]
 const cart  =[]
+const container = document.createElement('div')
+container.setAttribute('id','container')
+container.style = 'display: flex;justify-content: space-around'
+
 
 function createHeader(){
     const header = document.createElement('header')
@@ -19,13 +23,15 @@ function createHeader(){
     body.appendChild(header)
 }
 createHeader()
+body.appendChild(container)
 
 
 function toggleButton(){
 const toggleViewButton = document.createElement('button')
 toggleViewButton.setAttribute('id','toggleViewButton')
 toggleViewButton.innerHTML = 'Add Products'
-body.appendChild(toggleViewButton)
+const header = document.querySelector('#allJsHeader')
+header.appendChild(toggleViewButton)
 toggleViewButton.addEventListener('click',toggleView)
 }
 toggleButton()
@@ -43,15 +49,15 @@ function toggleView(){
         button.innerHTML = 'see all products'
         const list = document.querySelector('#stockListDiv')
         const cartDiv = document.querySelector('#cartDiv')
-        body.removeChild(list)
+        container.removeChild(list)
         if(cartDiv){
-            body.removeChild(cartDiv)
+            container.removeChild(cartDiv)
         }
         createAddForm()
     }else{
         button.innerHTML = 'Add Products'
         const form = document.querySelector('#addForm')
-        body.removeChild(form)
+        container.removeChild(form)
         createProdList()
         createCart()
     }
@@ -82,7 +88,7 @@ function createProdList(){
     })
 
     stockListDiv.appendChild(stockListUl)
-    body.appendChild(stockListDiv)
+    container.appendChild(stockListDiv)
 
 }
 createProdList()
@@ -121,7 +127,7 @@ function createAddForm(){
     addForm.appendChild(inputName)
     addForm.appendChild(inputPrice)
     addForm.appendChild(submitProduct)
-    body.appendChild(addForm)
+    container.appendChild(addForm)
 }
 
 function handleSubmit(ev){
@@ -142,7 +148,7 @@ function handleSubmit(ev){
 function createCart(){
     const prevCart = document.querySelector('#cartDiv')
     if(prevCart){
-        body.removeChild(prevCart)
+        container.removeChild(prevCart)
     }
 
     let total = 0
@@ -184,6 +190,6 @@ function createCart(){
     
     cartDiv.appendChild(cartList)
     cartDiv.appendChild(totalP)
-    body.appendChild(cartDiv)
+    container.appendChild(cartDiv)
 }
 
